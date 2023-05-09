@@ -1,5 +1,5 @@
 import useLocalStorage from '@/hooks/useLocalStorage';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { allLocalStorageData } from '@/hooks/useLocalStorage';
 import { allSessionStorageData } from '@/hooks/useSessionStorage';
 
@@ -30,8 +30,12 @@ const renderTable = (storageData : any) => {
 }
 
 const LocalSessionStorage = () => {
-    const [name, setName] = useLocalStorage<string>("", "");
+    const [name, setName] = useLocalStorage<string>("Mizan", "");
 
+  
+  useEffect(() => {
+    setName("CDDA")
+  },[])
     // decide what to render for local storage 
     let content = null;
     
