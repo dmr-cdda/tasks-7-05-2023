@@ -1,12 +1,5 @@
 import { useState } from "react";
 
-export const allSessionStorageData = Object.keys(sessionStorage).map(key => {
-  return {
-    key: key,
-    value: sessionStorage.getItem(key)
-  }
-});
-
 function useSessionStorage<T>(key: string, initialValue: T) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once

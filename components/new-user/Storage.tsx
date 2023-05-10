@@ -2,20 +2,12 @@
 import React, { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 
-export const getCookie = (name) => {
-
-    const value = `; ${document.cookie}`;
-
-    const parts = value.split(`; ${name}=`);
-
-    if (parts.length === 2) return parts.pop().split(";").shift();
-
-};
-
 const Storage = () => {
   const [cookies, setCookie, removeCookie] = useCookies([]);
 
-  const handleRemoveCookie = (key) => {
+  const handleRemoveCookie = (key: string) => {
+    console.log(key, typeof key);
+    
     removeCookie(key);
   };
 

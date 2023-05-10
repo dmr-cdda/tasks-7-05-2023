@@ -1,12 +1,5 @@
 import { useState } from "react";
 
-export const allLocalStorageData = Object.keys(localStorage).map(key => {
-  return {
-    key: key,
-    value: localStorage.getItem(key)
-  }
-});
-
 function useLocalStorage<T>(key: string, initialValue: T) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
@@ -47,6 +40,8 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 }
 
 export default useLocalStorage;
+
+
 // import { useState, useEffect } from "react";
 
 // export const allLocalStorageData = Object.keys(localStorage).map(key => {

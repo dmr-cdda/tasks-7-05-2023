@@ -1,7 +1,7 @@
 import useLocalStorage from '@/hooks/useLocalStorage';
 import React, { useEffect } from 'react'
-import { allLocalStorageData } from '@/hooks/useLocalStorage';
-import { allSessionStorageData } from '@/hooks/useSessionStorage';
+import { allLocalStorageData } from '@/utils/localStorageData';
+import { allSessionStorageData } from '@/utils/sessionStorageData';
 
 export type Data = {
     key: string,
@@ -30,6 +30,7 @@ const renderTable = (storageData : any) => {
 }
 
 const LocalSessionStorage = () => {
+  
     const [name, setName] = useLocalStorage<string>("Mizan", "");
 
   
@@ -39,14 +40,14 @@ const LocalSessionStorage = () => {
     // decide what to render for local storage 
     let content = null;
     
-    if(!allLocalStorageData?.length) content = <p>No local storage data found!</p>
-    if (allLocalStorageData?.length) content = renderTable(allLocalStorageData);
+    if(!allLocalStorageData()?.length) content = <p>No local storage data found!</p>
+    if (allLocalStorageData()?.length) content = renderTable(allLocalStorageData());
 
     // decide what to render for session storage 
     let sessionContent = null;
     
-    if(!allSessionStorageData?.length) sessionContent = <p>No session storage data found!</p>
-    if (allSessionStorageData?.length) sessionContent = renderTable(allSessionStorageData);
+    if(!allSessionStorageData()?.length) sessionContent = <p>No session storage data found!</p>
+    if (allSessionStorageData()?.length) sessionContent = renderTable(allSessionStorageData());
     
   return (
     <div className="bg-green-50 w-[600px] p-4 box-border overflow-x-scroll">
